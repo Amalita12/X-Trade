@@ -11,7 +11,17 @@ abstract class Asset {
         this.typeActif = typeActif;
     }
 
-    public void displayDetails(){
-        System.out.println("code: "+code+"nom"+nom+"prix unitaire"+prixUnitaire+"type actif"+typeActif);
+    public String getCode() {
+        return code;
     }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public double getPrixUnitaire() {
+        return prixUnitaire;
+    }
+
+
 }

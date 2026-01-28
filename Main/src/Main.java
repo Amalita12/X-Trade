@@ -1,15 +1,13 @@
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public  class Main{
     public static void main(String[] args) {
-
+Market market = new Market();
+market.initialiserMarcheCrypto();
+market.initialiserMarcheStock();
         Scanner s = new Scanner(System.in);
         int choice;
         do {
-          
-
-
                 System.out.println("=======Menu Principal============");
                 System.out.println("1.Menu Admin");
                 System.out.println("2.Menu Trader");
@@ -35,28 +33,67 @@ public  class Main{
                             choix1 = s.nextInt();
                             switch (choix1) {
                                 case 1:
-
+                                    System.out.println("Entrez l'ID du Trader: ");
+                                    int id = s.nextInt();
+                                    System.out.println("Entrez le nom du Trader: ");
+                                    String name = s.next();
+                                    System.out.println("Entrez son solde initial:");
+                                    double solde = s.nextDouble();
+                                    Trader nvTrader = new Trader(id, name,solde);
+                                    market.ajouterTrader(nvTrader);
+                                    System.out.println("Trader ajouté avec succès");
                                     break;
                                 case 2:
-
+                                    System.out.println("Entrez l'ID du Trader que vous voulez supprimer: ");
+                                    int suppId = s.nextInt();
+                                    market.supprimerTrader(suppId);
+                                    System.out.println("Trader supprimé avec succès");
                                     break;
                                 case 3:
+                                    System.out.println("Entrez le code du Stock: ");
+                                    String stockCode = s.next();
+                                    System.out.println("Entrez le nom du Stock: ");
+                                    String stockNom = s.next();
+                                    System.out.println("Entrez le prix unitaire du Stock: ");
+                                    double stockPrixUni = s.nextDouble();
+                                    System.out.println("Entrez le type de cet Actif (Stock / Crypto monnaie): ");
+                                    String stockType = s.next();
+                                    Asset nvStock;
+                                    nvStock= new Stock(stockCode, stockNom, stockPrixUni, stockType);
+                                    market.ajouterStock(nvStock);
+                                    System.out.println("Stock ajouté");
 
                                     break;
                                 case 4:
 
                                     break;
                                 case 5:
+                                    System.out.println("Entrez le code du Stock que vous voulez supprimer: ");
+                                    String code1  = s.next();
+                                    market.supprimerStock(code1);
 
                                     break;
                                 case 6:
-
+                                    System.out.println("Entrez le code du Crypto Monnaie: ");
+                                    String cryptoCode = s.next();
+                                    System.out.println("Entrez le nom du Crypto Monnaie: ");
+                                    String cryptoNom = s.next();
+                                    System.out.println("Entrez le prix unitaire du Crypto Monnaie: ");
+                                    double cryptoPrixUni = s.nextDouble();
+                                    System.out.println("Entrez le type de cet Actif (Stock / Crypto monnaie): ");
+                                    String cryptoType = s.next();
+                                    Asset nvCrypto;
+                                    nvCrypto= new Stock(cryptoCode, cryptoNom, cryptoPrixUni, cryptoType);
+                                    market.ajouterCrypto(nvCrypto);
+                                    System.out.println("Crypto Monnaie ajoutée");
                                     break;
                                 case 7:
 
                                     break;
                                 case 8:
-
+                                    System.out.println("Entrez le code du Crypto Monnaie que vous voulez supprimer: ");
+                                    String code2  = s.next();
+                                    market.supprimerCrypto(code2);
                                     break;
                                 case 0:
                                     System.out.println("Merci d'utilisé X-Trade. Au revoir!");
@@ -74,26 +111,37 @@ public  class Main{
                         int choix2;
                         do {
                             System.out.println("======Menu du Trader=======");
-                            System.out.println("1.Acheter Stock");
-                            System.out.println("2.Vendre Stock");
-                            System.out.println("3.Acheter Crypto Currency");
-                            System.out.println("4.Vendre Crypto Currency");
+                            System.out.println("1.Afficher Catalogue du Stock");
+                            System.out.println("2.Afficher Catalogue du Crypto Monnaie");
+                            System.out.println("3.Acheter Stock");
+                            System.out.println("4.Vendre Stock");
+                            System.out.println("5.Acheter Crypto Currency");
+                            System.out.println("6.Vendre Crypto Currency");
+                            System.out.println("7.Consulter Portfolio");
                             System.out.println("0.Quitter");
                             System.out.println("Entrez votre choix");
                             choix2 = s.nextInt();
 
                             switch (choix2) {
                                 case 1:
-                                    System.out.println("Achter stock will be her later");
+                                    market.initialiserMarcheStock();
+                                    market.afficherCatalogueStock();
+
                                     break;
                                 case 2:
-                                    System.out.println();
-
+                                    market.initialiserMarcheCrypto();
+                                    market.afficherCatalogueCrypto();
                                     break;
                                 case 3:
 
                                     break;
                                 case 4:
+
+                                    break;
+                                case 5:
+
+                                    break;
+                                case 6:
 
                                     break;
                                 case 0:
