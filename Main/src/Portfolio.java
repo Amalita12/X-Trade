@@ -23,15 +23,15 @@ public class Portfolio<T extends Asset> {
         }
     }
 
-    //public void ajouterActif(T actif, int quantite) {
+    public void ajouterActif(T actif, int quantite) {
         // On cherche si on l'a déjà
-    //    for (Element<T> e : contenu) {
-     //       if (e.getActif().getCode().equals(actif.getCode())) {
+   //    for (Element<T> e : contenu) {
+     //      if (e.getActif().getCode().equals(actif.getCode())) {
      //           e.setQuantite(e.getQuantite() + quantite);
-     //           return;
-     //       }
-    //    }
+                return;
+            }
+       }
         // Si on ne l'a pas trouvé, on l'ajoute à la liste
      //   contenu.add(new Element<>(actif, quantite));
-   // }
-}
+    //}
+//}

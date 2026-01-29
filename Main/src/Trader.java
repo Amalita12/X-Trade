@@ -15,4 +15,12 @@ public Trader(int id, String nom, double soldeInitial){
     public Portfolio getPortfolio() {
         return portfolio;
     }
+
+    public void setSoldeInitial(double soldeInitial) {
+        this.soldeInitial = soldeInitial;
+    }
+
+    public void setPortfolio(Portfolio portfolio) {
+        this.portfolio = portfolio;
+    }
 }

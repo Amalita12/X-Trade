@@ -130,10 +130,22 @@ public void acheterStock(int traderId, String CodeAsset, int quantite){
 
         if (trader== null){
             System.out.println("Trader introuvable");
+            return;
         }
-        if (stock == null){
+        if (stock == null) {
             System.out.println("Stock introuvable");
+            return;
+        }
 
+       double prixTotal = stock.getPrixUnitaire()*quantite;
+
+        if (stock.getPrixUnitaire()>prixTotal){
+            trader.setSoldeInitial(trader.getSoldeInitial()-prixTotal);
+
+            trader.getPortfolio().ajouterActif(stock,quantite);
+            System.out.println("Achat réussi");
+        }else {
+            System.out.println("Solde insuffisant! Solde requis: "+prixTotal);
         }
 
 

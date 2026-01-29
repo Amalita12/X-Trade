@@ -135,6 +135,13 @@ market.initialiserMarcheStock();
                                     market.afficherCatalogueCrypto();
                                     break;
                                 case 3:
+                                    System.out.println("Entrez votre ID: ");
+                                    int id = s.nextInt();
+                                    System.out.println("Entrez le code du stock à acheter: ");
+                                    String code = s.next();
+                                    System.out.println("Quelle quantité voulez-vous ?: ");
+                                    int quantite = s.nextInt();
+                                    market.acheterStock(id,code,quantite);
 
                                     break;
                                 case 4:
@@ -147,16 +154,16 @@ market.initialiserMarcheStock();
 
                                     break;
                                 case 0:
-                                    System.out.println("Merci d'utilisé X-Trade. Au revoir!");
+                                    System.out.println("Merci d'avoir utilisé X-Trade. Au revoir!");
                                     break;
                                 default:
-                                    System.out.println("hoix invalide. Veuillez réessayer");
+                                    System.out.println("choix invalide. Veuillez réessayer");
                                     break;
                             }
                         } while (choix2 != 0);
                         break;
                     case 0:
-                        System.out.println("Merci d'utilisé X-Trade. Au revoir!");
+                        System.out.println("Merci d'avoir  utilisé X-Trade. Au revoir!");
                         break;
                     default:
                         System.out.println("Choix invalide. Veuillez réessayer");
