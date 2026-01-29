@@ -58,20 +58,21 @@ market.initialiserMarcheStock();
                                     double stockPrixUni = s.nextDouble();
                                     System.out.println("Entrez le type de cet Actif (Stock / Crypto monnaie): ");
                                     String stockType = s.next();
-                                    Asset nvStock;
-                                    nvStock= new Stock(stockCode, stockNom, stockPrixUni, stockType);
+                                    System.out.println("Entrez la Quantité: ");
+                                    int quantite = s.nextInt();
+                                    Stock nvStock = new Stock(stockCode, stockNom, stockPrixUni, stockType, quantite);
                                     market.ajouterStock(nvStock);
                                     System.out.println("Stock ajouté");
 
                                     break;
                                 case 4:
-
+                                    market.modifierPrixStock();
                                     break;
                                 case 5:
+                                    market.afficherCatalogueStock();
                                     System.out.println("Entrez le code du Stock que vous voulez supprimer: ");
                                     String code1  = s.next();
-                                    market.supprimerStock(code1);
-
+                                   market.supprimerStock(code1);
                                     break;
                                 case 6:
                                     System.out.println("Entrez le code du Crypto Monnaie: ");
@@ -82,21 +83,24 @@ market.initialiserMarcheStock();
                                     double cryptoPrixUni = s.nextDouble();
                                     System.out.println("Entrez le type de cet Actif (Stock / Crypto monnaie): ");
                                     String cryptoType = s.next();
-                                    Asset nvCrypto;
-                                    nvCrypto= new Stock(cryptoCode, cryptoNom, cryptoPrixUni, cryptoType);
+                                    System.out.println("Entrez la Quantité: ");
+                                    int quantite2 = s.nextInt();
+                                    CryptoCurrency nvCrypto= new CryptoCurrency(cryptoCode, cryptoNom, cryptoPrixUni, cryptoType, quantite2);
                                     market.ajouterCrypto(nvCrypto);
                                     System.out.println("Crypto Monnaie ajoutée");
                                     break;
                                 case 7:
-
+                                    market.modifierPrixCrypto();
                                     break;
                                 case 8:
+                                    market.initialiserMarcheCrypto();
+                                    market.afficherCatalogueCrypto();
                                     System.out.println("Entrez le code du Crypto Monnaie que vous voulez supprimer: ");
                                     String code2  = s.next();
-                                    market.supprimerCrypto(code2);
+                                   market.supprimerCrypto(code2);
                                     break;
                                 case 0:
-                                    System.out.println("Merci d'utilisé X-Trade. Au revoir!");
+                                    System.out.println("Merci d'avoir utilisé X-Trade. Au revoir!");
                                     break;
                                 default:
                                     System.out.println("hoix invalide. Veuillez réessayer");
@@ -124,12 +128,10 @@ market.initialiserMarcheStock();
 
                             switch (choix2) {
                                 case 1:
-                                    market.initialiserMarcheStock();
                                     market.afficherCatalogueStock();
 
                                     break;
                                 case 2:
-                                    market.initialiserMarcheCrypto();
                                     market.afficherCatalogueCrypto();
                                     break;
                                 case 3:
