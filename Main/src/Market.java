@@ -158,7 +158,7 @@ public void acheterStock(int traderId, String CodeAsset, int quantite){
             return;
         }
         if (crypto == null) {
-            System.out.println("Stock introuvable");
+            System.out.println("Crypto introuvable");
             return;
         }
 
@@ -173,7 +173,54 @@ public void acheterStock(int traderId, String CodeAsset, int quantite){
             System.out.println("Solde insuffisant! Solde requis: " + prixTotal);
         }
     }
-public void initialiserMarcheStock() {
+
+
+    public  void vendreStock(int id,String code,int quantite){
+        Trader trader = trouverTrader(id);
+        Asset stock = trouverStock(code);
+        if(trader == null){
+            System.out.println("Trader non trouvé.");
+            return;
+        }
+        if (stock == null){
+            System.out.println("Stock intouvable");
+            return;
+        }
+        boolean aEteVendu = trader.getPortfolio().retirerActif(code,quantite);
+        double prixVente =  stock.getPrixUnitaire()* quantite;
+
+        if (aEteVendu){
+            trader.setSoldeInitial(trader.getSoldeInitial()+prixVente);
+            System.out.println("Vente réussie ! " + prixVente + "$ ajoutés au solde.");
+        }else {
+            System.out.println("échec de la vente.");
+        }
+
+    }
+    public  void vendreCrypto(int id,String code,int quantite){
+        Trader trader = trouverTrader(id);
+        Asset crypto = trouverCrypto(code);
+        if(trader == null){
+            System.out.println("Trader non trouvé.");
+            return;
+        }
+        if (crypto == null){
+            System.out.println("Stock intouvable");
+            return;
+        }
+        boolean aEteVendu = trader.getPortfolio().retirerActif(code,quantite);
+        double prixVente =  crypto.getPrixUnitaire()* quantite;
+
+        if (aEteVendu){
+            trader.setSoldeInitial(trader.getSoldeInitial()+prixVente);
+            System.out.println("Vente réussie ! " + prixVente + "$ ajoutés au solde.");
+        }else {
+            System.out.println("échec de la vente.");
+        }
+
+    }
+
+    public void initialiserMarcheStock() {
     // stock (actions)
     stocksPossedes.add(new Stock("AAPL", "Apple Inc.", 180.0, "Stock", 100));
     stocksPossedes.add(new Stock("TSLA", "Tesla", 240.0, "Stock",200));

@@ -681,7 +681,7 @@
 											"top": 703,
 											"width": 155.84716796875,
 											"height": 13,
-											"text": "Asset"
+											"text": "AbstractAsset"
 										},
 										{
 											"_type": "LabelView",
@@ -1203,25 +1203,7 @@
 											"top": 726,
 											"width": 197.16162109375,
 											"height": 13,
-											"text": "-actif: T",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAGcDhb4L7pn5ZU=",
-											"_parent": {
-												"$ref": "AAAAAAGb+eZ1vVma1Pc="
-											},
-											"model": {
-												"$ref": "AAAAAAGcDhb4IbpkyQQ="
-											},
-											"font": "Arial;13;0",
-											"parentStyle": true,
-											"left": 629,
-											"top": 741,
-											"width": 197.16162109375,
-											"height": 13,
-											"text": "-quantite: int",
+											"text": "-lignes: List<ElementPortefeuille>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1230,7 +1212,7 @@
 									"left": 624,
 									"top": 721,
 									"width": 207.16162109375,
-									"height": 38
+									"height": 23
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1254,7 +1236,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 629,
-											"top": 764,
+											"top": 749,
 											"width": 197.16162109375,
 											"height": 13,
 											"text": "+calculerValeurTotale(): double",
@@ -1272,7 +1254,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 629,
-											"top": 779,
+											"top": 764,
 											"width": 197.16162109375,
 											"height": 13,
 											"text": "+consulterPortfolio: void()",
@@ -1290,7 +1272,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 629,
-											"top": 794,
+											"top": 779,
 											"width": 197.16162109375,
 											"height": 13,
 											"text": "+ajouterActif(T actif, int quantite)()",
@@ -1308,7 +1290,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 629,
-											"top": 809,
+											"top": 794,
 											"width": 197.16162109375,
 											"height": 13,
 											"text": "+retirerActif(T actif, int quantite)()",
@@ -1318,7 +1300,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 624,
-									"top": 759,
+									"top": 744,
 									"width": 207.16162109375,
 									"height": 68
 								},
@@ -2111,6 +2093,24 @@
 											"height": 13,
 											"text": "+historiqueTransactions(): void",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGcDkYL7yPTTMk=",
+											"_parent": {
+												"$ref": "AAAAAAGb+epwXF5uaJ0="
+											},
+											"model": {
+												"$ref": "AAAAAAGcDkYL4SPQ2kI="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 997,
+											"top": 1178,
+											"width": 334.48046875,
+											"height": 13,
+											"text": "+afficherPortfolioTrader(int traderId)",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
@@ -2118,7 +2118,7 @@
 									"left": 992,
 									"top": 963,
 									"width": 344.48046875,
-									"height": 218
+									"height": 233
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -2159,7 +2159,7 @@
 							"left": 992,
 							"top": 928,
 							"width": 343.48046875,
-							"height": 253,
+							"height": 268,
 							"nameCompartment": {
 								"$ref": "AAAAAAGb+epwW15oFIo="
 							},
@@ -2394,7 +2394,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1314,
+									"left": 1317,
 									"top": 847,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -2416,7 +2416,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1303,
+									"left": 1306,
 									"top": 837,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -2438,7 +2438,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1337,
+									"left": 1340,
 									"top": 866,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -2460,7 +2460,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1277,
+									"left": 1281,
 									"top": 891,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -2482,7 +2482,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1268,
+									"left": 1272,
 									"top": 881,
 									"height": 13,
 									"alpha": 0.7853981633974483,
@@ -2503,7 +2503,7 @@
 									},
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1292,
+									"left": 1296,
 									"top": 912,
 									"width": 7.22998046875,
 									"height": 13,
@@ -2527,8 +2527,8 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1352,
-									"top": 803,
+									"left": 1353,
+									"top": 804,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -2548,7 +2548,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1341,
+									"left": 1342,
 									"top": 797,
 									"height": 13,
 									"alpha": -0.7853981633974483,
@@ -2568,7 +2568,7 @@
 									},
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1367,
+									"left": 1368,
 									"top": 818,
 									"width": 19.5126953125,
 									"height": 13,
@@ -2619,7 +2619,7 @@
 								"$ref": "AAAAAAGb+epwW15n37s="
 							},
 							"lineStyle": 1,
-							"points": "1272:927;1381:800",
+							"points": "1276:927;1382:800",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGb/7EUut4Zpio="
@@ -3071,9 +3071,9 @@
 									},
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 737,
+									"left": 731,
 									"top": 667,
-									"width": 7.22998046875,
+									"width": 19.5126953125,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -3081,7 +3081,7 @@
 										"$ref": "AAAAAAGcA+I+mwTh3NU="
 									},
 									"edgePosition": 2,
-									"text": "1"
+									"text": "0..*"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -3714,7 +3714,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Asset",
+					"name": "AbstractAsset",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -4023,7 +4023,7 @@
 								"reference": {
 									"$ref": "AAAAAAGb+eZ1u1mSIvU="
 								},
-								"multiplicity": "1"
+								"multiplicity": "0..*"
 							},
 							"end2": {
 								"_type": "UMLAssociationEnd",
@@ -4046,19 +4046,9 @@
 							"_parent": {
 								"$ref": "AAAAAAGb+eZ1u1mSIvU="
 							},
-							"name": "actif",
+							"name": "lignes",
 							"visibility": "private",
-							"type": "T"
-						},
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAGcDhb4IbpkyQQ=",
-							"_parent": {
-								"$ref": "AAAAAAGb+eZ1u1mSIvU="
-							},
-							"name": "quantite",
-							"visibility": "private",
-							"type": "int"
+							"type": "List<ElementPortefeuille>"
 						}
 					],
 					"operations": [
@@ -4651,6 +4641,25 @@
 									},
 									"type": "void",
 									"direction": "return"
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGcDkYL4SPQ2kI=",
+							"_parent": {
+								"$ref": "AAAAAAGb+epwW15lrNQ="
+							},
+							"name": "afficherPortfolioTrader",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGcDkYRlSQTs6A=",
+									"_parent": {
+										"$ref": "AAAAAAGcDkYL4SPQ2kI="
+									},
+									"name": "int traderId",
+									"type": ""
 								}
 							]
 						}

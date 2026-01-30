@@ -21,17 +21,38 @@ public class Portfolio<T extends Asset> {
         public int getQuantite() {
             return quantite;
         }
+
+        public void setActif(T actif) {
+            this.actif = actif;
+        }
+
+        public void setQuantite(int quantite) {
+            this.quantite = quantite;
+        }
     }
 
     public void ajouterActif(T actif, int quantite) {
         // On cherche si on l'a déjà
-   //    for (Element<T> e : contenu) {
-     //      if (e.getActif().getCode().equals(actif.getCode())) {
-     //           e.setQuantite(e.getQuantite() + quantite);
-                return;
-            }
-       }
-        // Si on ne l'a pas trouvé, on l'ajoute à la liste
-     //   contenu.add(new Element<>(actif, quantite));
+        //    for (Element<T> e : contenu) {
+        //      if (e.getActif().getCode().equals(actif.getCode())) {
+        //           e.setQuantite(e.getQuantite() + quantite);
+        return;
+    }
+
+    // Si on ne l'a pas trouvé, on l'ajoute à la liste
+    //   contenu.add(new Element<>(actif, quantite));
     //}
 //}
+
+    public boolean retirerActif(String code, int quantite) {
+     //   for (ElementPortefeuille<T> ligne : lignes) {
+     //       if (ligne.getActif().getCode().equalsIgnoreCase(code)) {
+      //          if (ligne.getQuantite() >= quantite) {
+                    // ... calcul et mise à jour ...
+     //               return true; // Succès
+     //           }
+     //       }
+     //   }
+        return false;
+    }
+}
