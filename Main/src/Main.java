@@ -148,6 +148,13 @@ market.initialiserMarcheStock();
 
                                     break;
                                 case 5:
+                                    System.out.println("Entrez votre ID: ");
+                                    int id2 = s.nextInt();
+                                    System.out.println("Entrez le code du stock à acheter: ");
+                                    String code2 = s.next();
+                                    System.out.println("Quelle quantité voulez-vous ?: ");
+                                    int quantite2 = s.nextInt();
+                                    market.acheterCrypto(id2,code2,quantite2);
 
                                     break;
                                 case 6:

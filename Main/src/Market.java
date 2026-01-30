@@ -145,15 +145,34 @@ public void acheterStock(int traderId, String CodeAsset, int quantite){
             trader.getPortfolio().ajouterActif(stock,quantite);
             System.out.println("Achat réussi");
         }else {
-            System.out.println("Solde insuffisant! Solde requis: "+prixTotal);
+            System.out.println("Solde insuffisant! Solde requis: " + prixTotal);
+        }
+}
+
+    public void acheterCrypto(int traderId, String CodeAsset, int quantite) {
+        Trader trader = trouverTrader(traderId);
+        Asset crypto = trouverStock(CodeAsset);
+
+        if (trader == null) {
+            System.out.println("Trader introuvable");
+            return;
+        }
+        if (crypto == null) {
+            System.out.println("Stock introuvable");
+            return;
         }
 
+        double prixTotal = crypto.getPrixUnitaire() * quantite;
 
+        if (crypto.getPrixUnitaire() > prixTotal) {
+            trader.setSoldeInitial(trader.getSoldeInitial() - prixTotal);
 
-
-
-
-}
+            trader.getPortfolio().ajouterActif(crypto, quantite);
+            System.out.println("Achat réussi");
+        } else {
+            System.out.println("Solde insuffisant! Solde requis: " + prixTotal);
+        }
+    }
 public void initialiserMarcheStock() {
     // stock (actions)
     stocksPossedes.add(new Stock("AAPL", "Apple Inc.", 180.0, "Stock", 100));
