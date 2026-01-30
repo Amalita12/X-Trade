@@ -1244,24 +1244,6 @@
 										},
 										{
 											"_type": "UMLOperationView",
-											"_id": "AAAAAAGcDiGdMrzFwuk=",
-											"_parent": {
-												"$ref": "AAAAAAGb+eZ1vVmbM24="
-											},
-											"model": {
-												"$ref": "AAAAAAGcDiGdK7zCS+8="
-											},
-											"font": "Arial;13;0",
-											"parentStyle": true,
-											"left": 629,
-											"top": 764,
-											"width": 197.16162109375,
-											"height": 13,
-											"text": "+consulterPortfolio: void()",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLOperationView",
 											"_id": "AAAAAAGcDiLYob48MJM=",
 											"_parent": {
 												"$ref": "AAAAAAGb+eZ1vVmbM24="
@@ -1272,7 +1254,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 629,
-											"top": 779,
+											"top": 764,
 											"width": 197.16162109375,
 											"height": 13,
 											"text": "+ajouterActif(T actif, int quantite)()",
@@ -1290,7 +1272,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 629,
-											"top": 794,
+											"top": 779,
 											"width": 197.16162109375,
 											"height": 13,
 											"text": "+retirerActif(T actif, int quantite)()",
@@ -1302,7 +1284,7 @@
 									"left": 624,
 									"top": 744,
 									"width": 207.16162109375,
-									"height": 68
+									"height": 53
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -2111,6 +2093,24 @@
 											"height": 13,
 											"text": "+afficherPortfolioTrader(int traderId)",
 											"horizontalAlignment": 0
+										},
+										{
+											"_type": "UMLOperationView",
+											"_id": "AAAAAAGcD1ZCJ0pBMJQ=",
+											"_parent": {
+												"$ref": "AAAAAAGb+epwXF5uaJ0="
+											},
+											"model": {
+												"$ref": "AAAAAAGcD1ZCHko+VYY="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": true,
+											"left": 997,
+											"top": 1193,
+											"width": 334.48046875,
+											"height": 13,
+											"text": "+afficherPortfolioTrader(int idVente)",
+											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
@@ -2118,7 +2118,7 @@
 									"left": 992,
 									"top": 963,
 									"width": 344.48046875,
-									"height": 233
+									"height": 248
 								},
 								{
 									"_type": "UMLReceptionCompartmentView",
@@ -2159,7 +2159,7 @@
 							"left": 992,
 							"top": 928,
 							"width": 343.48046875,
-							"height": 268,
+							"height": 283,
 							"nameCompartment": {
 								"$ref": "AAAAAAGb+epwW15oFIo="
 							},
@@ -2394,7 +2394,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1317,
+									"left": 1319,
 									"top": 847,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -2416,7 +2416,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1306,
+									"left": 1307,
 									"top": 837,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -2438,7 +2438,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1340,
+									"left": 1342,
 									"top": 866,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -2460,7 +2460,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1281,
+									"left": 1283,
 									"top": 891,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -2482,7 +2482,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1272,
+									"left": 1275,
 									"top": 881,
 									"height": 13,
 									"alpha": 0.7853981633974483,
@@ -2503,7 +2503,7 @@
 									},
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1296,
+									"left": 1299,
 									"top": 912,
 									"width": 7.22998046875,
 									"height": 13,
@@ -2527,7 +2527,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1353,
+									"left": 1354,
 									"top": 804,
 									"height": 13,
 									"alpha": -0.5235987755982988,
@@ -2548,7 +2548,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1342,
+									"left": 1343,
 									"top": 797,
 									"height": 13,
 									"alpha": -0.7853981633974483,
@@ -2568,7 +2568,7 @@
 									},
 									"font": "Arial;13;0",
 									"parentStyle": false,
-									"left": 1368,
+									"left": 1369,
 									"top": 818,
 									"width": 19.5126953125,
 									"height": 13,
@@ -2619,7 +2619,7 @@
 								"$ref": "AAAAAAGb+epwW15n37s="
 							},
 							"lineStyle": 1,
-							"points": "1276:927;1382:800",
+							"points": "1279:927;1383:800",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAGb/7EUut4Zpio="
@@ -4073,14 +4073,6 @@
 						},
 						{
 							"_type": "UMLOperation",
-							"_id": "AAAAAAGcDiGdK7zCS+8=",
-							"_parent": {
-								"$ref": "AAAAAAGb+eZ1u1mSIvU="
-							},
-							"name": "consulterPortfolio: void"
-						},
-						{
-							"_type": "UMLOperation",
 							"_id": "AAAAAAGcDiLYmr45hqc=",
 							"_parent": {
 								"$ref": "AAAAAAGb+eZ1u1mSIvU="
@@ -4659,6 +4651,25 @@
 										"$ref": "AAAAAAGcDkYL4SPQ2kI="
 									},
 									"name": "int traderId",
+									"type": ""
+								}
+							]
+						},
+						{
+							"_type": "UMLOperation",
+							"_id": "AAAAAAGcD1ZCHko+VYY=",
+							"_parent": {
+								"$ref": "AAAAAAGb+epwW15lrNQ="
+							},
+							"name": "afficherPortfolioTrader",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGcD1a1mEtO21I=",
+									"_parent": {
+										"$ref": "AAAAAAGcD1ZCHko+VYY="
+									},
+									"name": "int idVente",
 									"type": ""
 								}
 							]

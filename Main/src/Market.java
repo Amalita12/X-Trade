@@ -139,7 +139,7 @@ public void acheterStock(int traderId, String CodeAsset, int quantite){
 
        double prixTotal = stock.getPrixUnitaire()*quantite;
 
-        if (stock.getPrixUnitaire()>prixTotal){
+        if (trader.getSoldeInitial()>prixTotal){
             trader.setSoldeInitial(trader.getSoldeInitial()-prixTotal);
 
             trader.getPortfolio().ajouterActif(stock,quantite);
@@ -151,7 +151,7 @@ public void acheterStock(int traderId, String CodeAsset, int quantite){
 
     public void acheterCrypto(int traderId, String CodeAsset, int quantite) {
         Trader trader = trouverTrader(traderId);
-        Asset crypto = trouverStock(CodeAsset);
+        Asset crypto = trouverCrypto(CodeAsset);
 
         if (trader == null) {
             System.out.println("Trader introuvable");
@@ -164,7 +164,7 @@ public void acheterStock(int traderId, String CodeAsset, int quantite){
 
         double prixTotal = crypto.getPrixUnitaire() * quantite;
 
-        if (crypto.getPrixUnitaire() > prixTotal) {
+        if (trader.getSoldeInitial() > prixTotal) {
             trader.setSoldeInitial(trader.getSoldeInitial() - prixTotal);
 
             trader.getPortfolio().ajouterActif(crypto, quantite);
@@ -252,7 +252,6 @@ public void initialiserMarcheCrypto(){
     }
 
 
-
-
-
+    public void afficherPortfolioTrader(int idVente) {
+    }
 }

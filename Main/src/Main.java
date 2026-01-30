@@ -145,12 +145,22 @@ market.initialiserMarcheStock();
 
                                     break;
                                 case 4:
+                                    System.out.println("Entrez votre ID Trader : ");
+                                    int idVente = s.nextInt();
+                                    market.afficherPortfolioTrader(idVente);
+
+                                    System.out.println("Code du Stock à vendre : ");
+                                    String codeVente = s.next();
+                                    System.out.println("Quantité : ");
+                                    int qVente= s.nextInt();
+
+                                    market.vendreStock(idVente, codeVente, qVente);
 
                                     break;
                                 case 5:
                                     System.out.println("Entrez votre ID: ");
                                     int id2 = s.nextInt();
-                                    System.out.println("Entrez le code du stock à acheter: ");
+                                    System.out.println("Entrez le code du Crypto à acheter: ");
                                     String code2 = s.next();
                                     System.out.println("Quelle quantité voulez-vous ?: ");
                                     int quantite2 = s.nextInt();
@@ -158,7 +168,14 @@ market.initialiserMarcheStock();
 
                                     break;
                                 case 6:
-
+                                    System.out.println("Entrez votre ID Trader : ");
+                                    int idVenteC = s.nextInt();
+                                    market.afficherPortfolioTrader(idVenteC);
+                                    System.out.println("Code Crypto à vendre : ");
+                                    String codeVenteC = s.next();
+                                    System.out.println("Quantité : ");
+                                    int qteVenteC = s.nextInt();
+                                    market.vendreCrypto(idVenteC, codeVenteC, qteVenteC);
                                     break;
                                 case 0:
                                     System.out.println("Merci d'avoir utilisé X-Trade. Au revoir!");
