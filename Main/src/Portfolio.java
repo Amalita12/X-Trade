@@ -41,7 +41,7 @@ public class Portfolio<T extends Asset> {
         return false; // Échec : Actif non trouvé dans le portfolio
     }
 
-    // Méthode pour calculer la valeur totale (demandée dans ton UML)
+    // Méthode pour calculer la valeur totale
     public double calculerValeurTotale() {
         double total = 0;
         for (ElementPortefeuille<T> ligne : lignes) {
