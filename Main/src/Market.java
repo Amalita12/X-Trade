@@ -279,7 +279,7 @@ public void initialiserMarcheCrypto(){
                         " | Sous-total: " + (qte * actif.getPrixUnitaire()) + "$");
             }
 
-                System.out.println("----------------------------------------------");
+            System.out.println("----------------------------------------------");
             System.out.println("VALEUR TOTALE DES ACTIFS : " + portfolio.calculerValeurTotale() + " $");            }
             System.out.println("==============================================\n");
         }
