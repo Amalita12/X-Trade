@@ -69,4 +69,5 @@ public class Portfolio<T extends Asset> {
         public int getQuantite() { return quantite; }
         public void setQuantite(int quantite) { this.quantite = quantite; }
     }
+
 }

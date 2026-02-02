@@ -1187,32 +1187,12 @@
 									"model": {
 										"$ref": "AAAAAAGb+eZ1u1mSIvU="
 									},
-									"subViews": [
-										{
-											"_type": "UMLAttributeView",
-											"_id": "AAAAAAGb+htqhORCnuY=",
-											"_parent": {
-												"$ref": "AAAAAAGb+eZ1vVma1Pc="
-											},
-											"model": {
-												"$ref": "AAAAAAGb+htqeuQ/4r4="
-											},
-											"font": "Arial;13;0",
-											"parentStyle": true,
-											"left": 629,
-											"top": 726,
-											"width": 197.16162109375,
-											"height": 13,
-											"text": "-lignes: List<ElementPortefeuille>",
-											"horizontalAlignment": 0
-										}
-									],
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 624,
 									"top": 721,
 									"width": 207.16162109375,
-									"height": 23
+									"height": 10
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -1236,7 +1216,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 629,
-											"top": 749,
+											"top": 736,
 											"width": 197.16162109375,
 											"height": 13,
 											"text": "+calculerValeurTotale(): double",
@@ -1254,7 +1234,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 629,
-											"top": 764,
+											"top": 751,
 											"width": 197.16162109375,
 											"height": 13,
 											"text": "+ajouterActif(T actif, int quantite)()",
@@ -1272,7 +1252,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": true,
 											"left": 629,
-											"top": 779,
+											"top": 766,
 											"width": 197.16162109375,
 											"height": 13,
 											"text": "+retirerActif(T actif, int quantite)()",
@@ -1282,7 +1262,7 @@
 									"font": "Arial;13;0",
 									"parentStyle": true,
 									"left": 624,
-									"top": 744,
+									"top": 731,
 									"width": 207.16162109375,
 									"height": 53
 								},
@@ -4039,18 +4019,6 @@
 							}
 						}
 					],
-					"attributes": [
-						{
-							"_type": "UMLAttribute",
-							"_id": "AAAAAAGb+htqeuQ/4r4=",
-							"_parent": {
-								"$ref": "AAAAAAGb+eZ1u1mSIvU="
-							},
-							"name": "lignes",
-							"visibility": "private",
-							"type": "List<ElementPortefeuille>"
-						}
-					],
 					"operations": [
 						{
 							"_type": "UMLOperation",
@@ -4359,7 +4327,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGb+ifuWBZNw9I="
 									},
-									"name": "Stock stock"
+									"name": "Stock stock",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",

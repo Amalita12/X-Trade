@@ -93,7 +93,6 @@ market.initialiserMarcheStock();
                                     market.modifierPrixCrypto();
                                     break;
                                 case 8:
-                                    market.initialiserMarcheCrypto();
                                     market.afficherCatalogueCrypto();
                                     System.out.println("Entrez le code du Crypto Monnaie que vous voulez supprimer: ");
                                     String code2  = s.next();
@@ -176,6 +175,11 @@ market.initialiserMarcheStock();
                                     System.out.println("Quantité : ");
                                     int qteVenteC = s.nextInt();
                                     market.vendreCrypto(idVenteC, codeVenteC, qteVenteC);
+                                    break;
+                                case 7:
+                                    System.out.println("Entrez votre ID Trader : ");
+                                    int idConsultation = s.nextInt();
+                                    market.afficherPortfolioTrader(idConsultation);
                                     break;
                                 case 0:
                                     System.out.println("Merci d'avoir utilisé X-Trade. Au revoir!");

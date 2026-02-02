@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 
 public class Market {
 public ArrayList<Trader> traders;
@@ -250,8 +251,39 @@ public void initialiserMarcheCrypto(){
             }
         }
     }
+    public void afficherPortfolioTrader(int traderId) {
+        Trader trader = trouverTrader(traderId);
+
+        if (trader == null) {
+            System.out.println("Erreur : Trader avec l'ID " + traderId + " introuvable.");
+            return;
+        }
+
+        System.out.println("\n======= PORTFOLIO DE " + trader.getName().toUpperCase() + " =======");
+        System.out.println("Solde disponible : " + trader.getSoldeInitial() + " $");
+
+        Portfolio portfolio = trader.getPortfolio();
+        List<Portfolio.ElementPortefeuille> lignes = portfolio.getLignes();
+
+        if (lignes.isEmpty()) {
+            System.out.println("Votre portefeuille est actuellement vide.");
+        } else {
+            System.out.println("Actifs possédés :");
+            for (Portfolio.ElementPortefeuille ligne : lignes) {
+                Asset actif = (Asset) ligne.getActif();
+                int qte = ligne.getQuantite();
+
+                System.out.println("- [" + actif.getCode() + "] " + actif.getNom() +
+                        " | Qté: " + qte +
+                        " | Valeur Actuelle: " + actif.getPrixUnitaire() + "$ " +
+                        " | Sous-total: " + (qte * actif.getPrixUnitaire()) + "$");
+            }
+
+                System.out.println("----------------------------------------------");
+            System.out.println("VALEUR TOTALE DES ACTIFS : " + portfolio.calculerValeurTotale() + " $");            }
+            System.out.println("==============================================\n");
+        }
 
 
-    public void afficherPortfolioTrader(int idVente) {
     }
-}
+

@@ -23,4 +23,5 @@ public Trader(int id, String nom, double soldeInitial){
     public void setPortfolio(Portfolio portfolio) {
         this.portfolio = portfolio;
     }
+
 }
