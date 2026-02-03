@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Scanner;
 import java.util.List;
 
@@ -152,10 +153,11 @@ public void acheterStock(int traderId, String CodeAsset, int quantite){
 
        double prixTotal = stock.getPrixUnitaire()*quantite;
 
-        if (trader.getSoldeInitial()>prixTotal){
+        if (trader.getSoldeInitial()>=prixTotal){
             trader.setSoldeInitial(trader.getSoldeInitial()-prixTotal);
 
             trader.getPortfolio().ajouterActif(stock,quantite);
+            trader.getTransactions().add(new Transaction("ACHAT", quantite, stock.getPrixUnitaire(), new Date(), trader, stock));
             System.out.println("Achat réussi");
         }else {
             System.out.println("Solde insuffisant! Solde requis: " + prixTotal);
@@ -177,10 +179,10 @@ public void acheterStock(int traderId, String CodeAsset, int quantite){
 
         double prixTotal = crypto.getPrixUnitaire() * quantite;
 
-        if (trader.getSoldeInitial() > prixTotal) {
+        if (trader.getSoldeInitial() >= prixTotal) {
             trader.setSoldeInitial(trader.getSoldeInitial() - prixTotal);
-
             trader.getPortfolio().ajouterActif(crypto, quantite);
+            trader.getTransactions().add(new Transaction("ACHAT", quantite, crypto.getPrixUnitaire(), new Date(), trader, crypto));
             System.out.println("Achat réussi");
         } else {
             System.out.println("Solde insuffisant! Solde requis: " + prixTotal);
@@ -199,13 +201,14 @@ public void acheterStock(int traderId, String CodeAsset, int quantite){
             System.out.println("Stock intouvable");
             return;
         }
-        boolean aEteVendu = trader.getPortfolio().retirerActif(code,quantite);
         double prixVente =  stock.getPrixUnitaire()* quantite;
 
-        if (aEteVendu){
+        if (trader.getPortfolio().retirerActif(code,quantite)){
             trader.setSoldeInitial(trader.getSoldeInitial()+prixVente);
+            trader.getTransactions().add(new Transaction("VENTE", quantite, stock.getPrixUnitaire(), new Date(), trader, stock));
+
             System.out.println("Vente réussie ! " + prixVente + "$ ajoutés au solde.");
-        }else {
+        } else {
             System.out.println("échec de la vente.");
         }
 
@@ -221,11 +224,13 @@ public void acheterStock(int traderId, String CodeAsset, int quantite){
             System.out.println("Stock intouvable");
             return;
         }
-        boolean aEteVendu = trader.getPortfolio().retirerActif(code,quantite);
+
         double prixVente =  crypto.getPrixUnitaire()* quantite;
 
-        if (aEteVendu){
+        if (trader.getPortfolio().retirerActif(code,quantite)){
+
             trader.setSoldeInitial(trader.getSoldeInitial()+prixVente);
+            trader.getTransactions().add(new Transaction("VENTE", quantite, crypto.getPrixUnitaire(), new Date(), trader, crypto));
             System.out.println("Vente réussie ! " + prixVente + "$ ajoutés au solde.");
         }else {
             System.out.println("échec de la vente.");
@@ -295,6 +300,39 @@ public void initialiserMarcheCrypto(){
             System.out.println("VALEUR TOTALE DES ACTIFS : " + portfolio.calculerValeurTotale() + " $");            }
             System.out.println("==============================================\n");
         }
+
+
+
+
+
+
+    public void historiqueTransactions() {
+        System.out.println("\n======= HISTORIQUE DES TRANSACTIONS =======");
+
+        for (Trader t : traders) {
+            for (Transaction trans : t.getTransactions()) {
+                System.out.println("Trader: " + t.getName() + " | " + trans.toString());
+            }
+        }
+        System.out.println("============================================");
+    }
+
+    public void historiqueTransactionsPerTrader(int id ){
+        Trader trader = trouverTrader(id);
+        if(trader!=null){
+            System.out.println("--- Historique pour " + trader.getName() + " ---");
+            for (Transaction trans : trader.getTransactions()) {
+                System.out.println("Name: "+trader.getName()+"|Date: "+trans.toString());
+            }
+            }else {
+            System.out.println("Erreur : Aucun trader trouvé avec l'ID " + id);
+        }
+    }
+
+
+
+
+
 
 
     }

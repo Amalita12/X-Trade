@@ -28,6 +28,8 @@ market.initialiserMarcheStock();
                             System.out.println("6.Ajouter Crypto Currency");
                             System.out.println("7.Modifier Crypto Currency");
                             System.out.println("8.Supprimer Crypto Currency");
+                            System.out.println("9.Afficher l'historique");
+                            System.out.println("10.Afficher l'historique de chaque Trader");
                             System.out.println("0.Quitter");
                             System.out.println("Entrez votre choix: ");
                             choix1 = s.nextInt();
@@ -100,6 +102,15 @@ market.initialiserMarcheStock();
                                    market.supprimerCrypto(code2);
                                    market.afficherCatalogueCrypto();
                                     break;
+                                case 9:
+                                    market.historiqueTransactions();
+                                    break;
+                                case 10:
+                                    System.out.println("Entrez l'ID du Trader: ");
+                                    int id1 = s.nextInt();
+                                    market.historiqueTransactionsPerTrader(id1);
+                                    break;
+
                                 case 0:
                                     System.out.println("Merci d'avoir utilisé X-Trade. Au revoir!");
                                     break;
@@ -136,6 +147,7 @@ market.initialiserMarcheStock();
                                     market.afficherCatalogueCrypto();
                                     break;
                                 case 3:
+                                    market.afficherCatalogueStock();
                                     System.out.println("Entrez votre ID: ");
                                     int id = s.nextInt();
                                     System.out.println("Entrez le code du stock à acheter: ");
@@ -149,16 +161,15 @@ market.initialiserMarcheStock();
                                     System.out.println("Entrez votre ID Trader : ");
                                     int idVente = s.nextInt();
                                     market.afficherPortfolioTrader(idVente);
-
                                     System.out.println("Code du Stock à vendre : ");
                                     String codeVente = s.next();
                                     System.out.println("Quantité : ");
                                     int qVente= s.nextInt();
-
                                     market.vendreStock(idVente, codeVente, qVente);
 
                                     break;
                                 case 5:
+                                    market.afficherCatalogueCrypto();
                                     System.out.println("Entrez votre ID: ");
                                     int id2 = s.nextInt();
                                     System.out.println("Entrez le code du Crypto à acheter: ");
