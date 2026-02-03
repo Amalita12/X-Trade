@@ -57,6 +57,7 @@ public void supprimerTrader(int id ){
 }
 public void ajouterStock(Stock stock){
         stocksPossedes.add(stock);
+        afficherCatalogueStock();
 }
 
     public  void modifierPrixStock(){
@@ -71,6 +72,11 @@ public void ajouterStock(Stock stock){
         double nvPrice = s.nextDouble();
         stock.setPrixUnitaire(nvPrice);
         System.out.println("Prix du Stock modifié avec succès");
+        System.out.println("Entrez la quantité: ");
+        int q = s.nextInt();
+        stock.setQuantite(q);
+        System.out.println("Quantité modifiée");
+        afficherCatalogueStock();
         }else {
             System.out.println("Stock non trouvé!");
         }
@@ -90,6 +96,7 @@ public void ajouterStock(Stock stock){
 
     public void ajouterCrypto(CryptoCurrency crypto){
         cryptosPossedes.add(crypto);
+        afficherCatalogueCrypto();
     }
 
 
@@ -105,6 +112,11 @@ public void ajouterStock(Stock stock){
                 double nvPrice2 = s.nextDouble();
                 crypto.setPrixUnitaire(nvPrice2);
                 System.out.println("Prix modifié! ");
+                System.out.println("Entrez la quantité: ");
+                int q = s.nextInt();
+                crypto.setQuantite(q);
+                System.out.println("Quantité modifiée");
+                afficherCatalogueCrypto();
             }else {
                 System.out.println("Crypto monnaie non trouvé");
             }
@@ -238,7 +250,7 @@ public void initialiserMarcheCrypto(){
         System.out.println("======== Liste de tous les Actions (Stocks) disponibles ==========");
         for (Asset a : stocksPossedes) {
             if (a instanceof Stock) {
-                System.out.println("[" + a.getCode() + "] " + a.getNom() + " : " + a.getPrixUnitaire() + "$");
+                System.out.println("[" + a.getCode() + "] " + a.getNom() + " : " + a.getPrixUnitaire() + "$"+"| Quantité: "+a.getQuantite());
             }
         }
     }
@@ -247,7 +259,7 @@ public void initialiserMarcheCrypto(){
         System.out.println("======== Liste de tous les Crypto Monnaies diponibles ==========");
         for (Asset a : cryptosPossedes) {
             if (a instanceof CryptoCurrency) {
-                System.out.println("[" + a.getCode() + "] " + a.getNom() + " : " + a.getPrixUnitaire() + "$");
+                System.out.println("[" + a.getCode() + "] " + a.getNom() + " : " + a.getPrixUnitaire() + "$"+"| Quantité: "+a.getQuantite());
             }
         }
     }

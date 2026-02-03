@@ -73,6 +73,7 @@ market.initialiserMarcheStock();
                                     System.out.println("Entrez le code du Stock que vous voulez supprimer: ");
                                     String code1  = s.next();
                                    market.supprimerStock(code1);
+                                    market.afficherCatalogueStock();
                                     break;
                                 case 6:
                                     System.out.println("Entrez le code du Crypto Monnaie: ");
@@ -97,12 +98,13 @@ market.initialiserMarcheStock();
                                     System.out.println("Entrez le code du Crypto Monnaie que vous voulez supprimer: ");
                                     String code2  = s.next();
                                    market.supprimerCrypto(code2);
+                                   market.afficherCatalogueCrypto();
                                     break;
                                 case 0:
                                     System.out.println("Merci d'avoir utilisé X-Trade. Au revoir!");
                                     break;
                                 default:
-                                    System.out.println("hoix invalide. Veuillez réessayer");
+                                    System.out.println("choix invalide. Veuillez réessayer");
                                     break;
                             }
 

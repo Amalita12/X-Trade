@@ -4,13 +4,13 @@ import java.util.List;
 public class Trader extends Person  {
 private double soldeInitial;
 private Portfolio portfolio;
-private Trader trader;
 private List<Transaction> transactions;
 
 public Trader(int id, String nom, double soldeInitial) {
-    this.soldeInitial = soldeInitial;
-    this.portfolio = new Portfolio();
     super(id, nom);
+
+    this.soldeInitial = soldeInitial;
+    this.portfolio = new Portfolio(this);
     this.transactions = new ArrayList<>();
 }
     public double getSoldeInitial() {
@@ -29,4 +29,13 @@ public Trader(int id, String nom, double soldeInitial) {
         this.portfolio = portfolio;
     }
 
+
+
+    public List<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(List<Transaction> transactions) {
+        this.transactions = transactions;
+    }
 }

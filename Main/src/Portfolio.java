@@ -4,9 +4,11 @@ import java.util.List;
 public class Portfolio<T extends Asset> {
 
     private List<ElementPortefeuille<T>> lignes;
+    private Trader trader;
 
-    public Portfolio() {
+    public Portfolio(Trader trader) {
         this.lignes = new ArrayList<>();
+        this.trader = trader;
     }
 
     public void ajouterActif(T actif, int quantite) {
@@ -21,7 +23,6 @@ public class Portfolio<T extends Asset> {
         lignes.add(new ElementPortefeuille<>(actif, quantite));
     }
 
-    // Méthode pour retirer un actif (utilisée lors de la vente)
     public boolean retirerActif(String code, int quantite) {
         for (ElementPortefeuille<T> ligne : lignes) {
             if (ligne.getActif().getCode().equalsIgnoreCase(code)) {
