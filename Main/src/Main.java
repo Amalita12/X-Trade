@@ -1,3 +1,6 @@
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.Scanner;
 
 public  class Main{
@@ -8,6 +11,9 @@ market.initialiserMarcheStock();
         Scanner s = new Scanner(System.in);
         int choice;
         do {
+            try {
+
+
                 System.out.println("=======Menu Principal============");
                 System.out.println("1.Menu Admin");
                 System.out.println("2.Menu Trader");
@@ -30,6 +36,7 @@ market.initialiserMarcheStock();
                             System.out.println("8.Supprimer Crypto Currency");
                             System.out.println("9.Afficher Historique des Transactions");
                             System.out.println("10.Afficher Historique des Transactions per Trader");
+                            System.out.println("11. Filtrer les transactions");
                             System.out.println("0.Quitter");
                             System.out.println("Entrez votre choix: ");
                             choix1 = s.nextInt();
@@ -110,6 +117,46 @@ market.initialiserMarcheStock();
                                     int id1= s.nextInt();
                                     market.historiqueTransactionsPerTrader(id1);
                                     break;
+                                case 11:
+                                    int choix;
+                                    do {
+                                        System.out.println("==========Filtrer Par Transaction==========");
+                                        System.out.println("1.Filtrer par type (ACHAT/VENTE)");
+                                        System.out.println("2.Filtrer par Actif financier");
+                                        System.out.println("3.Filter par Date");
+                                        System.out.println("0.Quitter");
+                                        System.out.println("Entrez votre choix: ");
+                                        choix = s.nextInt();
+                                        switch (choix){
+                                            case 1:
+                                                System.out.println("Entrez le type de la Transaction (ACHAT/VENTE): ");
+                                                String type = s.next();
+                                                market.FiltrerTransactionnsParType(type);
+                                                break;
+                                            case 2:
+                                                System.out.println("Entrez le code de l'Actif: ");
+                                                String code = s.next();
+                                                market.FiltrageTransactionsParActif(code);
+                                                break;
+                                            case 3:
+                                                System.out.println("Entrez la date de début (yyyy-MM-dd) :");
+                                                String startDate = s.next();
+                                                LocalDate date1 = LocalDate.parse(startDate);
+                                                System.out.println("Entrez la date de fin (yyyy-MM-dd) :");
+                                                String endtDate = s.next();
+                                                LocalDate date2 = LocalDate.parse(endtDate);
+                                                market.FiltrageTransactionsParDate(date1,date2);
+                                                System.out.println();
+                                                break;
+                                            case 0:
+                                                break;
+                                            default:
+                                                System.out.println("Choix invalide! Veuillez réessayer.");
+                                                break;
+
+                                        }
+                                    }while(choix!=0);
+                                    break;
                                 case 0:
                                     System.out.println("Merci d'avoir utilisé X-Trade. Au revoir!");
                                     break;
@@ -146,9 +193,9 @@ market.initialiserMarcheStock();
                                     market.afficherCatalogueCrypto();
                                     break;
                                 case 3:
-                                    market.afficherCatalogueStock();
                                     System.out.println("Entrez votre ID: ");
                                     int id = s.nextInt();
+                                    market.afficherCatalogueStock();
                                     System.out.println("Entrez le code du stock à acheter: ");
                                     String code = s.next();
                                     System.out.println("Quelle quantité voulez-vous ?: ");
@@ -168,9 +215,9 @@ market.initialiserMarcheStock();
 
                                     break;
                                 case 5:
-                                    market.afficherCatalogueCrypto();
                                     System.out.println("Entrez votre ID: ");
                                     int id2 = s.nextInt();
+                                    market.afficherCatalogueCrypto();
                                     System.out.println("Entrez le code du Crypto à acheter: ");
                                     String code2 = s.next();
                                     System.out.println("Quelle quantité voulez-vous ?: ");
@@ -209,8 +256,13 @@ market.initialiserMarcheStock();
                         System.out.println("Choix invalide. Veuillez réessayer");
                 }
 
-
+            } catch (Exception e) {
+                System.out.println("Une erreur inattendue est survenue." );
+                s.nextLine();
+                choice = 0;
+            }
             } while (choice != 0) ;
+
 
 
 

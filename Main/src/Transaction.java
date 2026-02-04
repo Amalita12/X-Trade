@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -6,11 +7,11 @@ public class Transaction {
     private String typeTransaction;
     private int quantite;
     private double prixUnitaire;
-    private Date date;
+    private LocalDate date;
     private  Trader trader;
     private Asset actif;
 
-    public Transaction(String typeTransaction, int quantite, double prixUnitaire, Date date, Trader trader, Asset actif) {
+    public Transaction(String typeTransaction, int quantite, double prixUnitaire, LocalDate date, Trader trader, Asset actif) {
         this.typeTransaction = typeTransaction;
         this.quantite = quantite;
         this.prixUnitaire = prixUnitaire;
@@ -31,7 +32,7 @@ public class Transaction {
         return prixUnitaire;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 

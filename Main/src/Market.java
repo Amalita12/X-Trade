@@ -1,18 +1,19 @@
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
-import java.util.List;
+import java.time.LocalDate;
+import java.util.*;
 
 public class Market {
 public ArrayList<Trader> traders;
     public static ArrayList<Stock> stocksPossedes;
     public static ArrayList<CryptoCurrency> cryptosPossedes;
+    public static ArrayList<Transaction> transactions;
+
 
 
     public Market(){
         this.traders= new ArrayList<>();
         this.stocksPossedes= new ArrayList<>();
         this.cryptosPossedes = new ArrayList<>();
+        this.transactions = new ArrayList<>();
 
 }
 
@@ -157,7 +158,7 @@ public void acheterStock(int traderId, String CodeAsset, int quantite){
             trader.setSoldeInitial(trader.getSoldeInitial()-prixTotal);
 
             trader.getPortfolio().ajouterActif(stock,quantite);
-            trader.getTransactions().add(new Transaction("ACHAT", quantite, stock.getPrixUnitaire(), new Date(), trader, stock));
+            transactions.add(new Transaction("ACHAT", quantite, stock.getPrixUnitaire(), LocalDate.now(), trader, stock));
             System.out.println("Achat réussi");
         }else {
             System.out.println("Solde insuffisant! Solde requis: " + prixTotal);
@@ -182,7 +183,7 @@ public void acheterStock(int traderId, String CodeAsset, int quantite){
         if (trader.getSoldeInitial() >= prixTotal) {
             trader.setSoldeInitial(trader.getSoldeInitial() - prixTotal);
             trader.getPortfolio().ajouterActif(crypto, quantite);
-            trader.getTransactions().add(new Transaction("ACHAT", quantite, crypto.getPrixUnitaire(), new Date(), trader, crypto));
+            transactions.add(new Transaction("ACHAT", quantite, crypto.getPrixUnitaire(), LocalDate.now(), trader, crypto));
             System.out.println("Achat réussi");
         } else {
             System.out.println("Solde insuffisant! Solde requis: " + prixTotal);
@@ -205,7 +206,7 @@ public void acheterStock(int traderId, String CodeAsset, int quantite){
 
         if (trader.getPortfolio().retirerActif(code,quantite)){
             trader.setSoldeInitial(trader.getSoldeInitial()+prixVente);
-            trader.getTransactions().add(new Transaction("VENTE", quantite, stock.getPrixUnitaire(), new Date(), trader, stock));
+            transactions.add(new Transaction("VENTE", quantite, stock.getPrixUnitaire(), LocalDate.now(), trader, stock));
 
             System.out.println("Vente réussie ! " + prixVente + "$ ajoutés au solde.");
         } else {
@@ -230,7 +231,7 @@ public void acheterStock(int traderId, String CodeAsset, int quantite){
         if (trader.getPortfolio().retirerActif(code,quantite)){
 
             trader.setSoldeInitial(trader.getSoldeInitial()+prixVente);
-            trader.getTransactions().add(new Transaction("VENTE", quantite, crypto.getPrixUnitaire(), new Date(), trader, crypto));
+            transactions.add(new Transaction("VENTE", quantite, crypto.getPrixUnitaire(), LocalDate.now(), trader, crypto));
             System.out.println("Vente réussie ! " + prixVente + "$ ajoutés au solde.");
         }else {
             System.out.println("échec de la vente.");
@@ -329,10 +330,26 @@ public void initialiserMarcheCrypto(){
     }
 
 
-
-
-
-
-
+    public void FiltrerTransactionnsParType(String type){
+        List<Transaction> filtrage = transactions.stream()
+                .filter(t ->t.getTypeTransaction().equalsIgnoreCase(type))
+                .toList();
+        filtrage.forEach(System.out::println);
+    }
+    public void FiltrageTransactionsParActif(String code){
+        List<Transaction> filtrage = transactions.stream()
+                .filter(t-> t.getActif().getCode().equalsIgnoreCase(code))
+                .toList();
+        filtrage.forEach(System.out::println);    }
+    public void FiltrageTransactionsParDate(LocalDate startDate, LocalDate endDate){
+        List<Transaction> dates = transactions.stream()
+                .filter(d-> !d.getDate().isAfter(endDate) && !d.getDate().isBefore(startDate))
+                .toList();
+        if (dates.isEmpty()){
+            System.out.println("Aucune transaction effectuée durant cette période");
+        }else {
+            dates.forEach(System.out::println);
+        }
+    }
     }
 
