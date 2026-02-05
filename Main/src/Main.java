@@ -36,7 +36,10 @@ market.initialiserMarcheStock();
                             System.out.println("8.Supprimer Crypto Currency");
                             System.out.println("9.Afficher Historique des Transactions");
                             System.out.println("10.Afficher Historique des Transactions per Trader");
-                            System.out.println("11. Filtrer les transactions");
+                            System.out.println("11.Filtrer les Transactions");
+                            System.out.println("12.Trier les Transactions");
+                            System.out.println("13.Volume Total échangé par Actif");
+                            System.out.println("14.Volume Total des ACHATS & VENTES");
                             System.out.println("0.Quitter");
                             System.out.println("Entrez votre choix: ");
                             choix1 = s.nextInt();
@@ -50,7 +53,6 @@ market.initialiserMarcheStock();
                                     double solde = s.nextDouble();
                                     Trader nvTrader = new Trader(id, name,solde);
                                     market.ajouterTrader(nvTrader);
-                                    System.out.println("Trader ajouté avec succès");
                                     break;
                                 case 2:
                                     System.out.println("Entrez l'ID du Trader que vous voulez supprimer: ");
@@ -149,6 +151,7 @@ market.initialiserMarcheStock();
                                                 System.out.println();
                                                 break;
                                             case 0:
+                                                System.out.println("Retour.......");
                                                 break;
                                             default:
                                                 System.out.println("Choix invalide! Veuillez réessayer.");
@@ -157,8 +160,42 @@ market.initialiserMarcheStock();
                                         }
                                     }while(choix!=0);
                                     break;
+                                case 12:
+                                    int choix4;
+                                    do {
+                                        System.out.println("=========Le Tri de toutes Les Transactions=========");
+                                        System.out.println("1. Trier par Date toutes les Transactions");
+                                        System.out.println("2. Trier par Montant toutes les Transactions");
+                                        System.out.println("0. Quitter");
+                                        System.out.println("Entrez votre choix: ");
+                                        choix4 = s.nextInt();
+                                        switch (choix4){
+                                            case 1:
+                                                market.triParDate();
+                                                break;
+                                            case 2:
+                                                market.triParMontant();
+                                                break;
+                                            case 0:
+                                                System.out.println("Retour.......");
+                                                break;
+                                            default:
+                                                System.out.println("Choix invalide! Veuillez réessayer.");
+                                                break;
+                                        }
+
+                                    }while(choix4!=0);
+                                    break;
+                                case 13:
+                                    System.out.println("Entrez le code de l'Actif");
+                                    String code = s.next();
+                                    market.VolumeTotalActif(code);
+                                    break;
+                                case 14:
+                                    market.VolumeTotalAchatVente();
+                                    break;
                                 case 0:
-                                    System.out.println("Merci d'avoir utilisé X-Trade. Au revoir!");
+                                    System.out.println("Retour au Menu Principal.......");
                                     break;
                                 default:
                                     System.out.println("choix invalide. Veuillez réessayer");
@@ -241,7 +278,7 @@ market.initialiserMarcheStock();
                                     market.afficherPortfolioTrader(idConsultation);
                                     break;
                                 case 0:
-                                    System.out.println("Merci d'avoir utilisé X-Trade. Au revoir!");
+                                    System.out.println("Retour au Menu Principal.......");
                                     break;
                                 default:
                                     System.out.println("choix invalide. Veuillez réessayer");
