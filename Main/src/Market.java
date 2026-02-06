@@ -419,6 +419,18 @@ public class Market {
         System.out.println("-----------------------------------------");
         System.out.println("Volume TOTAL du marché   : " + (totalAchat + totalVente) + " $");
     }
+    public void VolumeTotalParTrader(int id ){
+        System.out.println("========= Le Volume Total échangé par un Trader ==========");
+        double total = transactions.stream()
+                .filter(t-> t.getTrader().getId() == id)
+                .mapToDouble(t->t.getPrixUnitaire()* t.getQuantite())
+                .sum();
+
+        System.out.println("Volume Total échangé: "+total+" $");
+
+    }
+
+
     }
 
 
@@ -433,7 +445,7 @@ public class Market {
 
 
 
-}
+
 
 
 

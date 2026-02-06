@@ -40,6 +40,7 @@ market.initialiserMarcheStock();
                             System.out.println("12.Trier les Transactions");
                             System.out.println("13.Volume Total échangé par Actif");
                             System.out.println("14.Volume Total des ACHATS & VENTES");
+                            System.out.println("15.Analyse de performance par trader");
                             System.out.println("0.Quitter");
                             System.out.println("Entrez votre choix: ");
                             choix1 = s.nextInt();
@@ -194,6 +195,33 @@ market.initialiserMarcheStock();
                                 case 14:
                                     market.VolumeTotalAchatVente();
                                     break;
+                                case 15:
+                                    int choix2;
+                                    do {
+                                        System.out.println("======= Analyse de performance par trader ========");
+                                        System.out.println("1.Volume total échangé par trader");
+                                        System.out.println("2.Nombre total d’ordres passés");
+                                        System.out.println("3.Classement des traders par volume ");
+                                        System.out.println("0.Quitter");
+                                        System.out.println("Entrez votre choix: ");
+                                        choix2 = s.nextInt();
+                                        switch (choix2){
+                                            case 1:
+                                                System.out.println("Entrez l'ID du Trader: ");
+                                                int id2= s.nextInt();
+                                                market.VolumeTotalParTrader(id2);
+                                                break;
+                                            case 2:
+
+                                                 break;
+                                            case 3:
+
+                                                break;
+
+
+                                        }
+
+                                    }while(choix2!=0);
                                 case 0:
                                     System.out.println("Retour au Menu Principal.......");
                                     break;
