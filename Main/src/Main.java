@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.Scanner;
 
 public  class Main{
+
     public static void main(String[] args) {
 Market market = new Market();
 market.initialiserMarcheCrypto();
@@ -41,6 +42,7 @@ market.initialiserMarcheStock();
                             System.out.println("13.Volume Total échangé par Actif");
                             System.out.println("14.Volume Total des ACHATS & VENTES");
                             System.out.println("15.Analyse de performance par trader");
+                            System.out.println("16.Analyse Globale du Marché");
                             System.out.println("0.Quitter");
                             System.out.println("Entrez votre choix: ");
                             choix1 = s.nextInt();
@@ -212,16 +214,59 @@ market.initialiserMarcheStock();
                                                 market.VolumeTotalParTrader(id2);
                                                 break;
                                             case 2:
-
+                                                System.out.println("Entrez l'ID du Trader: ");
+                                                int id3= s.nextInt();
+                                                market.afficherNombreOrdres(id3);
                                                  break;
                                             case 3:
-
+                                                System.out.print("Combien de traders dans le top ? ");
+                                                int n = s.nextInt();
+                                                market.ClassementTraders(n);
                                                 break;
-
+                                            case 0:
+                                                System.out.println("Retour.......");
+                                                break;
+                                            default:
+                                                System.out.println("Choix invalide! Veuillez réessayer.");
+                                                break;
 
                                         }
 
                                     }while(choix2!=0);
+                                    break;
+                                case 16:
+                                    int choix3;
+                                    do {
+                                        System.out.println("======= Analyse Globale du marché simulé========");
+                                        System.out.println("1.Volume total échangé par instrument financier");
+                                        System.out.println("2.Identification de l’instrument le plus échangé");
+                                        System.out.println("3.Calcul du montant total des BUY et des SELL ");
+                                        System.out.println("0.Quitter");
+                                        System.out.println("Entrez votre choix: ");
+                                        choix3 = s.nextInt();
+                                        switch (choix3){
+                                            case 1:
+                                                market.VolumeGlobalParInstrument();
+                                                break;
+                                            case 2:
+
+
+                                                break;
+                                            case 3:
+
+                                                break;
+                                            case 0:
+                                                System.out.println("Retour.......");
+                                                break;
+                                            default:
+                                                System.out.println("Choix invalide! Veuillez réessayer.");
+                                                break;
+                                        }
+
+                                    }while(choix3!=0);
+
+                                    break;
+
                                 case 0:
                                     System.out.println("Retour au Menu Principal.......");
                                     break;

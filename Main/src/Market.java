@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Market {
     public ArrayList<Trader> traders;
@@ -326,16 +327,16 @@ public class Market {
     }
 
     // Partie 2:
-
+    // Analyse des transactions
     public void historiqueTransactionsPerTrader(int id) {
-        Trader trader = trouverTrader(id);
-        if (trader != null) {
-            System.out.println("--- Historique pour " + trader.getName() + " ---");
-            for (Transaction trans : transactions) {
-                System.out.println("Name: " + trader.getName() + "|Date: " + trans.toString());
-            }
+        List<Transaction> traderTransactions = transactions.stream()
+                .filter(t-> t.getTrader().getId()==id)
+                .toList();
+        if (traderTransactions.isEmpty()) {
+            System.out.println("Aucune transaction trouvée pour le trader avec l'ID : " + id);
         } else {
-            System.out.println("Erreur : Aucun trader trouvé avec l'ID " + id);
+            System.out.println("======= HISTORIQUE POUR LE TRADER ID: " + id + " =======");
+            traderTransactions.forEach(System.out::println);
         }
     }
 
@@ -419,6 +420,11 @@ public class Market {
         System.out.println("-----------------------------------------");
         System.out.println("Volume TOTAL du marché   : " + (totalAchat + totalVente) + " $");
     }
+
+
+    // Analyse de performance par trader
+
+
     public void VolumeTotalParTrader(int id ){
         System.out.println("========= Le Volume Total échangé par un Trader ==========");
         double total = transactions.stream()
@@ -429,6 +435,62 @@ public class Market {
         System.out.println("Volume Total échangé: "+total+" $");
 
     }
+    public void afficherNombreOrdres(int id) {
+        System.out.println("========= Le Nombre Total d’ordres passés du Trader: "+id+" ==========");
+        long nbOrdres = transactions.stream()
+                .filter(t -> t.getTrader().getId()== id)
+                .count(); // renvoie un long
+
+        System.out.println("Le trader: " + id + " a passé " + nbOrdres + " ordres.");
+    }
+
+    public void ClassementTraders(int n){
+        System.out.println("======= TOP " + n + " DES TRADERS PAR VOLUME =======");
+        transactions.stream()
+                .collect(Collectors.groupingBy(Transaction::getTrader,
+                        Collectors.summingDouble(t->t.getPrixUnitaire()*t.getQuantite())))
+                .entrySet().stream() // on transforme la map en stream
+                .sorted(Map.Entry.<Trader, Double>comparingByValue().reversed()) // on trie par valeur(montant) en inversé on commence par le plus gros
+                .limit(n)// on garde seulement les N premiers
+                .forEach(t -> {
+                    System.out.println("Trader: " + t.getKey().getName() +
+                            " | Volume total: " + t.getValue() + " $");
+                });
+    }
+
+
+    // Analyse globale du marché simulé
+
+    public void VolumeGlobalParInstrument(){
+        System.out.println("======= BILAN GLOBAL DES INSTRUMENTS =======");
+        Map<String, Double> bilan = transactions.stream ()
+                .collect(Collectors.groupingBy(t->t.getActif().getNom(),
+                        Collectors.summingDouble(t->t.getQuantite()*t.getPrixUnitaire())));
+        bilan.forEach((nom, volume) ->
+                System.out.println("Instrument: " + nom + " | Volume Total: " + volume + " $")
+        );
+    }
+    public void VolumeTotalAchat(String type){
+        System.out.println("========= Le Volume Total des ACHATS  ==========");
+
+        double totalAchat = transactions.stream()
+                .filter(t-> t.getTypeTransaction().equalsIgnoreCase("ACHAT"))
+                .mapToDouble(t->t.getPrixUnitaire()*t.getQuantite())
+                .sum();
+
+        System.out.println("Montant total des ACHATS : " + totalAchat + " $");
+        System.out.println("-----------------------------------------");
+    }
+    public void  VolumeTotalVente (String type){
+        double totalVente = transactions.stream()
+                .filter(t-> t.getTypeTransaction().equalsIgnoreCase("VENTE"))
+                .mapToDouble(t->t.getPrixUnitaire()*t.getQuantite())
+                .sum();
+        System.out.println("Montant total des VENTES : " + totalVente + " $");
+        System.out.println("-----------------------------------------");
+
+    }
+
 
 
     }
